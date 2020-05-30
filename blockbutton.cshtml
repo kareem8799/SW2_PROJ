@@ -1,0 +1,12 @@
+﻿@model WebApplication5.Models.User
+@if (Model.User_State == true)
+{
+    <a href="@Url.Action("Dis_blockUser", "Admin", new { idofuser = Model.User_ID })" class="btn btn-danger btn-lg active">Dis block</a>
+
+}
+else
+{
+    <a href="@Url.Action("Dis_blockUser", "Admin", new { idofuser = Model.User_ID })" class="btn btn-success btn-lg active">block</a>
+}
+
+

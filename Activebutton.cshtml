@@ -1,0 +1,11 @@
+﻿@model WebApplication5.Models.Ads
+           @if (Model.ADs_State == true)
+           {
+            <a href="@Url.Action("Dis_ActiveAd", "Admin", new { idofAd = Model.ADs_ID })" class="btn btn-danger btn-lg active">Dis Active</a>
+              
+           }
+           else
+           {
+            <a href="@Url.Action("Dis_ActiveAd", "Admin", new { idofAd = Model.ADs_ID })" class="btn btn-success btn-lg active">Active</a>
+           }
+             
