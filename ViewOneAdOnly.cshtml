@@ -1,0 +1,23 @@
+﻿@model WebApplication5.Models.Ads
+@{
+    ViewBag.Title = "ViewOneAdOnly";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ViewOneAdOnly</h2>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-6">
+            <a>
+                <img src="~/Uploads/@Url.Content(Model.Ad_image)"
+                     class="thumbnail"
+                     style="width:350px; height:350px;" />
+            </a>
+        </div>
+        <div class="col-xs-6">
+            <p>@Model.ADs_Tittle</p>
+            <p>@Model.Ads_Categories</p>
+            <p>@Model.ADs_Discription</p>
+        </div>
+    </div>
+</div>
