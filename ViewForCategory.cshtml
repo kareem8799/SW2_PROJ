@@ -1,0 +1,33 @@
+﻿@model IEnumerable<WebApplication5.Models.Categories>
+           <h4>categories</h4>
+@using (@Html.BeginForm("ViewAllAds", "Ads", FormMethod.Get))
+{
+    <div class="row">
+        <input type="submit" value="Add Gategory" formaction="/Admin/AddCategory" class="btn btn-block btn-primary" />
+    </div>
+    <div class="row">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+
+                    <th scope="col">Name</th>
+                    <th scope="col">Number</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var x in Model)
+                {
+                    <tr>
+
+                        <td>@x.Categories_Name</td>
+                        <td>@x.number_of_products</td>
+                        <td>@Html.ActionLink("Remove", "RemoveCategory", "Admin", new { idofcategory = @x.Categories_ID }, new { @class = "btn btn-block btn-primary " })</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+
