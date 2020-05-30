@@ -1,0 +1,28 @@
+﻿@model IEnumerable<WebApplication5.Models.Ads>
+@{
+    ViewBag.Title = "ShowMyAds";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ShowMyAds</h2>
+
+<div class="row">
+
+    @foreach (var Ad1 in Model)
+    {
+        if (Ad1.ADs_State == true)
+        {
+            <div class="card col-lg-2  col-md-4 col-sm-4 col-xs-6">
+                <a href="@Url.Action("ViewOneAdForUser", "Account", new { idofproduct = Ad1.ADs_ID })">
+                    <img class="thumbnail " src="~/Uploads/@Url.Content(Ad1.Ad_image)"
+                         style="width:auto; height:250px;"
+                         alt="Card image cap">
+                </a>
+                <div class="card-body">
+                    <a href="@Url.Action("ViewOneAdForUser", "Account", new { idofproduct = Ad1.ADs_ID })" class="card-title">@Ad1.ADs_Tittle</a>
+                    <p class="card-text">@Ad1.Ads_Categories</p>
+                </div>
+            </div>
+        }
+    }
+</div>

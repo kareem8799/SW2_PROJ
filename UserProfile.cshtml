@@ -1,0 +1,28 @@
+﻿@model WebApplication5.Models.User
+@{
+    ViewBag.Title = "UserProfile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>UserProfile</h2>
+<a href="@Url.Action("UpdataUserProfile", "Account", new { idofuser = Model.User_ID })" class="btn btn-danger btn-lg active">Profile Edit</a>
+<div class="form-horizontal">
+    <h4>product</h4>
+    <hr />
+    <div class="form-group">
+        @Html.LabelFor(m => m.User_ID)
+        @Html.TextBoxFor(m => m.User_ID, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.User_Name)
+        @Html.TextBoxFor(m => m.User_Name, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.User_phone)
+        @Html.TextBoxFor(m => m.User_phone, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.User_phone)
+        @Html.TextBoxFor(m => m.User_phone, new { @class = "form-control" })
+    </div>
+</div>

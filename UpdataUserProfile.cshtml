@@ -1,0 +1,39 @@
+﻿@model WebApplication5.Models.User
+@{
+    ViewBag.Title = "UpdataUserProfile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>UpdataUserProfile</h2>
+@using (@Html.BeginForm("UpdataUserProfileDB", "Account", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+<div class="form-horizontal">
+    <h4>product</h4>
+    <hr />
+    <div class="form-group">
+        @Html.LabelFor(m => m.password)
+        @Html.TextBoxFor(m => m.password, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.User_Name)
+        @Html.TextBoxFor(m => m.User_Name, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.User_phone)
+        @Html.TextBoxFor(m => m.User_phone, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.User_phone)
+        @Html.TextBoxFor(m => m.User_phone, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.confrim_password)
+        @Html.TextBoxFor(m => m.confrim_password, new { @class = "form-control" })
+    </div>
+</div>
+<div class="form-group">
+    <div class="col-md-offset-2 col-md-10">
+        <input type="submit" value="Submiit" class="btn btn-default" />
+    </div>
+</div>
+}

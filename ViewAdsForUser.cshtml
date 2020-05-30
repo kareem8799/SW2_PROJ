@@ -1,0 +1,49 @@
+﻿@model IEnumerable<WebApplication5.Models.Ads>
+@{
+    ViewBag.Title = "ViewAllAds";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{
+    
+    WebApplication5.Models.ApplicationDbContext _context = new WebApplication5.Models.ApplicationDbContext();
+    string x = Session["username"].ToString();
+    var Userdata = _context.User_db.Where(m => m.User_Name == x).First();
+    
+}
+<h2>ViewAllAds</h2>
+
+@using (@Html.BeginForm("ViewAdsForUser", "Account", FormMethod.Get))
+{
+        <div class="row">
+            @Html.TextBox("Searching")
+            <input type="submit" value="search" formaction="/Account/ViewAdsForUser" />
+            @if (Session["username"] != null)
+            {
+                <a href="@Url.Action("UserProfile", "Account", new { username = Session["username"] })" class="btn btn-danger btn-lg active">Profile</a>
+                <a href="@Url.Action("ShowMyAds", "Account", new { username = Session["username"] })" class="btn btn-danger btn-lg active">My Ads</a>
+            }
+
+        </div>
+        <div class="row">
+
+            @foreach (var Ad1 in Model)
+            {
+                if (Ad1.ADs_State == true && (Ad1.User_id != @Userdata.User_ID))
+                {
+                    <div class="card col-lg-2  col-md-4 col-sm-4 col-xs-6">
+                        <a href="@Url.Action("ViewOneAdOnly", "Ads", new { idofproduct = Ad1.ADs_ID })">
+                            <img class="thumbnail " src="~/Uploads/@Url.Content(Ad1.Ad_image)"
+                                 style="width:auto; height:250px;"
+                                 alt="Card image cap">
+                        </a>
+                        <div class="card-body">
+
+                            <a href="@Url.Action("ViewOneAdOnly", "Ads", new { idofproduct = Ad1.ADs_ID })" class="card-title">@Ad1.ADs_Tittle</a>
+                            <p class="card-text">@Ad1.Ads_Categories</p>
+                            <a href="@Url.Action("AdToCart", "Cart", new { idofAd = Ad1.ADs_ID })" class="btn btn-danger btn-lg active">Add to Cart</a>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+}

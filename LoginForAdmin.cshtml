@@ -1,0 +1,31 @@
+﻿@{WebApplication5.Models.ApplicationDbContext _context = new WebApplication5.Models.ApplicationDbContext();
+var Categorydata = _context.Category_db.ToList();
+var Adsdata = _context.Ads_db.ToList();
+var Userdata = _context.User_db.ToList();
+}
+@{
+    ViewBag.Title = "LoginForAdmin";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>Admin Borad</h3>
+<div class="container">
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#firsttab" data-toggle="tab">Ads Borad</a></li>
+        <li><a href="#secondtab" data-toggle="tab">Users Borad</a></li>
+        <li><a href="#thirdtab" data-toggle="tab">Category Borad</a></li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane active" id="firsttab">
+            @Html.Partial("ViewForAds", @Adsdata)
+           
+        </div>
+        <div class="tab-pane" id="secondtab">
+            @Html.Partial("ViewForUser", @Userdata)
+           
+        </div>
+        <div class="tab-pane" id="thirdtab">
+            @Html.Partial("ViewForCategory", @Categorydata)
+        </div>
+    </div>
+</div>
