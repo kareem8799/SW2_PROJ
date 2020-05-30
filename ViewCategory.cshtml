@@ -1,0 +1,18 @@
+﻿@model IEnumerable<WebApplication5.Models.Categories>
+@{
+    ViewBag.Title = "ViewCategory";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ViewCategory</h2>
+@{
+
+foreach (var x in Model)
+    {
+       <p>@x.Categories_ID</p>
+            <p>@x.Categories_Name</p>
+        <p>@x.number_of_products</p>
+    @Html.ActionLink("Remove","RemoveCategory", "Admin", new { idofcategory = @x.Categories_ID }, new { @class = "btn btn-block btn-primary " })
+    }
+
+}

@@ -1,0 +1,23 @@
+﻿@model IEnumerable<WebApplication5.Models.User>
+@{
+    ViewBag.Title = "ViewUserForAdmin";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ViewUserForAdmin</h2>
+
+@using (@Html.BeginForm("ViewAllAds", "Ads", FormMethod.Get))
+{
+
+    foreach (var User1 in Model)
+    {
+        <div class="card col-lg-2  col-md-4 col-sm-4 col-xs-6">
+            <a>@User1.User_Name</a>
+            <a>@User1.User_Email</a>
+            <div class="card-body">
+                @Html.Partial("blockbutton", @User1)
+            </div>
+        </div>
+    }
+
+}
