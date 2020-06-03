@@ -1,0 +1,34 @@
+﻿@model  List<WebApplication5.Models.Ads>
+@{
+    ViewBag.Title = "ViewAllCart";
+    Layout = "~/Views/Ads/ViewAllAds.cshtml";
+}
+
+<h2>ViewAllCart</h2>
+
+@using (@Html.BeginForm("ViewAllAds", "Ads", FormMethod.Get))
+{
+    <div class="row">
+        @Html.TextBox("Searching")
+        <input type="submit" value="search" formaction="/Ads/ViewAllAds" />
+    </div>
+    <div class="row">
+
+        @foreach (var Ad1 in Model)
+        {
+            <div class="card col-lg-2  col-md-4 col-sm-4 col-xs-6">
+                <a href="@Url.Action("ViewOneAdOnly", "Ads", new { idofproduct = Ad1.ADs_ID })">
+                    <img class="thumbnail " src="~/Uploads/@Url.Content(Ad1.Ad_image)"
+                         style="width:auto; height:250px;"
+                         alt="Card image cap">
+                </a>
+                <div class="card-body">
+                    <a href="@Url.Action("ViewOneAdOnly", "Ads", new { idofproduct = Ad1.ADs_ID })" class="card-title">@Ad1.ADs_Tittle</a>
+                    <p class="card-text">@Ad1.Ads_Categories</p>
+                    <a href="@Url.Action("AdToCart", "Cart", new { idofAd = Ad1.ADs_ID })" class="btn btn-danger btn-lg active">Add to Cart</a>
+                </div>
+            </div>
+        }
+    </div>
+
+}
